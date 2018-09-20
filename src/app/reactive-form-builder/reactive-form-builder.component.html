@@ -1,0 +1,90 @@
+<!-- <form novalidate (ngSubmit)="onSubmit()" [formGroup]="user">
+  <label>
+    <span>Full name</span>
+    <input
+      type="text"
+      placeholder="Your full name"
+      formControlName="name">
+  </label>
+  <br>
+  <div
+    class="error"
+    *ngIf="user.get('name').hasError('required') && user.get('name').touched">
+    Name is required
+  </div>
+  <div
+    class="error"
+    *ngIf="user.get('name').hasError('minlength') && user.get('name').touched">
+    Minimum of 2 characters
+  </div>
+  <div formGroupName="account">
+    <label>
+      <span>Email address</span>
+      <input
+        type="email"
+        placeholder="Your email address"
+        formControlName="email">
+    </label>
+    <br>
+    <div
+      class="error"
+      *ngIf="user.get('account').get('email').hasError('required') && user.get('account').get('email').touched">
+      Email is required
+    </div>
+    <label>
+      <span>Confirm address</span>
+      <input
+        type="email"
+        placeholder="Confirm your email address"
+        formControlName="confirm">
+    </label>
+  </div>
+  <div
+    class="error"
+    *ngIf="user.get('account').get('confirm').hasError('required') && user.get('account').get('confirm').touched">
+    Confirming email is required
+  </div>
+  <button type="submit" [disabled]="user.invalid">Sign up</button>
+</form> -->
+
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+    <label>
+        Cliente:
+        <input type="text" formControlName="customerName">
+    </label><br>
+    <div formArrayName="emails">
+      <div *ngFor="let email of emails.controls; let i=index">
+        <label>
+          Email - {{ i + 1 }}
+          <input type="text" [formControlName]="i">
+        </label>
+        <button (click)="remove(emails, i)">Remove Item</button><br>
+      </div>
+    </div>
+    <div formArrayName="items">
+      <div *ngFor="let address of items.controls; let i=index" [formGroupName]="i">
+         {{ i + 1 }})
+        <label>
+          Nome:
+          <input type="text" formControlName="name">
+        </label>
+        <label>
+            Descrição:
+            <input type="text" formControlName="description">
+        </label>
+        <label>
+            Preço:
+            <input type="text" formControlName="price">
+        </label>
+        <button (click)="remove(items, i)">Remove Item</button>
+      </div>
+    </div>
+    <button (click)="addItems()">Add Items</button>
+    <button (click)="addEmail()">Add Emails</button>
+
+</form>
+
+
+<!-- <pre>{{ user.value | json }}</pre> -->
+
+<pre>{{ orderForm.value | json }}</pre>

@@ -1,0 +1,42 @@
+<form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <label>
+    <span>Full name</span>
+    <input
+      type="text"
+      placeholder="Your full name"
+      name="name"
+      ngModel
+      required>
+  </label>
+  <div ngModelGroup="account">
+    <label>
+      <span>Email address</span>
+      <input
+        type="email"
+        placeholder="Your email address"
+        name="email"
+        ngModel>
+    </label>
+    <label>
+      <span>Confirm address</span>
+      <input
+        type="email"
+        placeholder="Confirm your email address"
+        name="confirm"
+        ngModel>
+    </label>
+  </div>
+  <button type="submit" [disabled]="f.invalid">Sign up</button>
+</form>
+
+<div *ngIf="f.controls.name?.required" class="error">
+  Name is required
+</div>
+
+<!-- <pre>{{ f.controls.name?.errors | json }}</pre> -->
+
+<!-- <pre>{{ f.controls.asdapoisjdpaojpasoj?.errors | json }}</pre> -->
+
+<pre>{{ f.value | json }}</pre>
+
+<!-- <pre>{{ user | json }} </pre> -->

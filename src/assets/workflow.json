@@ -1,0 +1,74 @@
+{
+    "alias": "O TESTE",
+    "connections": [
+        {
+            "from": "step0",
+            "to": "step02"
+        },
+        {
+            "from": "step02",
+            "to": "idEndGroup"
+        },
+        {
+            "from": "idStartGroup",
+            "to": "step0"
+        }
+    ],
+    "id": "d6cbd076-0b46-4bf4-801a-1be2fb36d769",
+    "metadata": {
+        "inputs": [
+            {
+                "description": "minha description",
+                "name": "minha_variavel"
+            }
+        ],
+        "outputs": [
+            {
+                "description": "minha saida 1",
+                "name": "minha_saida"
+            }
+        ]
+    },
+    "steps": [
+        {
+            "id": "idEndGroup",
+            "label": "Evento final",
+            "properties": {
+                "endEvent": "true"
+            },
+            "type": "endComponent"
+        },
+        {
+            "contents": [
+                {
+                    "payload": {
+                        "text": "#{minha_variavel}"
+                    },
+                    "type": "text/plain"
+                }
+            ],
+            "id": "step0",
+            "label": "Envia Chat",
+            "properties": {
+                "from": "#{session['chatFrom']}"
+            },
+            "type": "sendChatActivity"
+        },
+        {
+            "id": "idStartGroup",
+            "label": "Evento inicial",
+            "properties": {
+                "startEvent": "true"
+            },
+            "type": "startComponent"
+        },
+        {
+            "id": "step02",
+            "label": "Resposta Usuario",
+            "type": "chatEvent",
+            "variables": {
+                "minha_saida": "payload"
+            }
+        }
+    ]
+}
