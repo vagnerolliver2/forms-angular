@@ -1,61 +1,81 @@
-<fieldset>
-    <legend>Medatada 1</legend>
-    <div class="columns">
-    <div class="column is-2">
-        <label class="label">Nome</label>
-        <div class="control is-expanded has-icons-left">
-            <input class="input" type="text" placeholder="Name">
-            <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-            </span>
+
+
+    <div class="card-content">
+        <div class="content" *ngFor="let metadataControl of parent.controls; let i = index; let last = last">
+            <fieldset [formGroup]="metadataControl">
+                <legend>Metadata {{ i + 1 }}</legend>
+                <div class="columns">
+                <div class="column is-2">
+                    <label class="label">Nome</label>
+                    <div class="control is-expanded has-icons-left">
+                        <input class="input" type="text" formControlName="name" (keydown.space)="$event.preventDefault()" placeholder="Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="column is-5">
+                    <label class="label">Label</label>
+                    <div class="control is-expanded has-icons-left">
+                        <input class="input" type="text" formControlName="label" placeholder="Label">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="column">
+                    <label class="label">Descrição</label>
+                    <div class="control is-expanded has-icons-left">
+                        <input class="input" type="text" formControlName="description" placeholder="Descrição">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-5">
+                        <label class="label">Hint</label>
+                        <div class="control is-expanded has-icons-left">
+                            <input class="input" type="text" formControlName="hint" placeholder="Hint">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <label class="label">Tipo</label>
+                        <div class="control is-expanded has-icons-left">
+                            <input class="input" type="text" formControlName="type" placeholder="Tipo">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label class="label">&nbsp;</label>
+                        <div class="control is-expanded has-icons-left">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Campo obrigatório
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label class="label">&nbsp;</label>
+                        <button class="is-success button"
+                                (click)="addField()"
+                                *ngIf="last && metadataControl.get('name').value.length && metadataControl.get('label').value.length">
+                            add
+                        </button>
+                        <span>&nbsp;</span>
+                        <button class="is-danger button"
+                                (click)="removeField(i)"
+                                [ngClass]="{ 'is-invisible': parent.length === 1 }">
+                            remove
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </div>
-    <div class="column is-5">
-        <label class="label">Label</label>
-        <div class="control is-expanded has-icons-left">
-            <input class="input" type="text" placeholder="Name">
-            <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-            </span>
-        </div>
-    </div>
-    <div class="column">
-        <label class="label">Descrição</label>
-        <div class="control is-expanded has-icons-left">
-            <input class="input" type="text" placeholder="Name">
-            <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-            </span>
-        </div>
-    </div>
-    </div>
-    <div class="columns">
-        <div class="column is-5">
-            <label class="label">Hint</label>
-            <div class="control is-expanded has-icons-left">
-                <input class="input" type="text" placeholder="Name">
-                <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-                </span>
-            </div>
-        </div>
-        <div class="column is-3">
-            <label class="label">Tipo</label>
-            <div class="control is-expanded has-icons-left">
-                <input class="input" type="text" placeholder="Name">
-                <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-                </span>
-            </div>
-        </div>
-        <div class="column is-3">
-            <label class="label">&nbsp;</label>
-            <div class="control is-expanded has-icons-left">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Este campo é obrigatório
-                </label>
-            </div>
-        </div>
-    </div>
-</fieldset>

@@ -51,7 +51,7 @@
 
             <h2 class="subtitle">Metadados</h2>
 
-            <div class="card">
+            <div class="card" *ngIf="inputs.controls.length > 0">
                 <header class="card-header">
                     <p class="card-header-title">
                         Entradas
@@ -62,14 +62,15 @@
                         </span>
                     </a>
                 </header>
-                <div class="card-content" formArrayName="inputs">
-                    <div class="content" *ngFor="let input of inputs.controls; let i = index; let last = last" [formGroupName]="i">
-                        <app-metadata></app-metadata>
-                    </div>
-                </div>
+
+                <app-metadata
+                    [parent]="inputs"
+                    (add)="add(inputs, 'metadata')"
+                    (remove)="remove(inputs, $event)">
+                </app-metadata>
             </div>
 
-            <div class="card">
+            <div class="card" *ngIf="outputs.controls.length > 0">
                 <header class="card-header">
                     <p class="card-header-title">
                         Saídas
@@ -80,17 +81,18 @@
                         </span>
                     </a>
                 </header>
-                <div class="card-content"formArrayName="outputs">
-                    <div class="content" *ngFor="let input of outputs.controls; let i = index; let last = last" [formGroupName]="i">
-                        <app-metadata></app-metadata>
-                    </div>
-                </div>
+
+                <app-metadata
+                    [parent]="outputs"
+                    (add)="add(outputs, 'metadata')"
+                    (remove)="remove(outputs, $event)">
+                </app-metadata>
             </div>
         </div>
     </form>
   </div>
 </section>
-<pre>{{ form.value | json }}</pre>
+<pre>{{ form.value.metadata | json }}</pre>
 <pre>
     {{ form.valid | json }}
 </pre>

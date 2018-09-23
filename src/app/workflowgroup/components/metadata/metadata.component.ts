@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-metadata',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './metadata.component.html',
   styleUrls: ['./metadata.component.sass']
 })
-export class MetadataComponent implements OnInit {
+export class MetadataComponent {
+
+  @Input()
+  parent: FormArray;
+
+  @Input()
+  group: FormGroup;
+
+  @Output()
+  add = new EventEmitter<any>();
+
+  @Output()
+  remove = new EventEmitter<any>();
 
   constructor() { }
 
-  ngOnInit() {
+  addField() {
+    this.add.emit();
   }
 
+  removeField(index: number) {
+    this.remove.emit(index);
+  }
 }

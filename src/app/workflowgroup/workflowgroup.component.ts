@@ -80,7 +80,7 @@ export class WorkflowgroupComponent implements OnInit {
         this.loadFieldsMetadata(metadata);
     }
 
-    public addIOFields(
+    public addIOField(
         { name = '', label = '', description = '', type = '', hint = '', required = false }:
         { name: string, label: string, description: string, type: string, hint: string, required: boolean }) {
 
@@ -99,13 +99,20 @@ export class WorkflowgroupComponent implements OnInit {
     }
 
     loadFieldsMetadata(metadata: GroupMetadata) {
-        const createInField = (value: MetadataItem) => this.inputs.push(this.addIOFields(value));
-        const createOutField = (value: MetadataItem) => this.outputs.push(this.addIOFields(value));
+        const createInField = (value: MetadataItem) => this.inputs.push(this.addIOField(value));
+        const createOutField = (value: MetadataItem) => this.outputs.push(this.addIOField(value));
 
         metadata.inputs.forEach((value) => createInField(value));
         metadata.outputs.forEach((value) => createOutField(value));
     }
 
+    add(formArray: FormArray, parentControl: string) {
+        formArray.push(this.addIOField(this.mockMetaItem));
+    }
+
+    remove(formArray: FormArray, index: number) {
+        formArray.removeAt(index);
+    }
 
     submitForm() {
         this.hasSubmmited = false;
