@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { MetadataComponent } from './workflowgroup/components/metadata/metadata.component';
 
 const appRoutes: Routes = [
-  { path: 'worflowgroup', component: WorkflowgroupComponent },
+  { path: 'workflowgroup', component: WorkflowgroupComponent },
   { path: '**', component: HomeComponent }
 ];
 
