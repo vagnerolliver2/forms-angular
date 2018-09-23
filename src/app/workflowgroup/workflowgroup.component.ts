@@ -106,7 +106,7 @@ export class WorkflowgroupComponent implements OnInit {
         metadata.outputs.forEach((value) => createOutField(value));
     }
 
-    add(formArray: FormArray, parentControl: string) {
+    add(formArray: FormArray, parentControl?: string) {
         formArray.push(this.addIOField(this.mockMetaItem));
     }
 

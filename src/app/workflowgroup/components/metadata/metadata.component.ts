@@ -12,9 +12,6 @@ export class MetadataComponent {
   @Input()
   parent: FormArray;
 
-  @Input()
-  group: FormGroup;
-
   @Output()
   add = new EventEmitter<any>();
 

@@ -10,18 +10,22 @@
             <div class="column is-6">
                 <label class="label">Alias</label>
                 <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text" formControlName="alias" placeholder="Nome do Agrupamento">
+                    <input class="input" type="text"
+                        formControlName="alias"
+                        placeholder="Nome do Agrupamento">
                     <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                 </div>
             </div>
             <div class="column">
                 <label class="label">Ícone</label>
                 <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text" formControlName="icon" placeholder="Url do ícone">
+                    <input class="input" type="text"
+                        formControlName="icon"
+                        placeholder="Url do ícone">
                     <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                 </div>
             </div>
@@ -30,18 +34,22 @@
              <div class="column is-6">
                 <label class="label">Descrição</label>
                 <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text" formControlName="description" placeholder="Descrição do agrupamento">
+                    <input class="input" type="text"
+                        formControlName="description"
+                        placeholder="Descrição do agrupamento">
                     <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                 </div>
             </div>
             <div class="column">
                 <label class="label">Dica</label>
                 <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text" formControlName="hint" placeholder="Dica do agrupamento">
+                    <input class="input" type="text"
+                        formControlName="hint"
+                        placeholder="Dica do agrupamento">
                     <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                 </div>
             </div>
@@ -65,7 +73,7 @@
 
                 <app-metadata
                     [parent]="inputs"
-                    (add)="add(inputs, 'metadata')"
+                    (add)="add(inputs)"
                     (remove)="remove(inputs, $event)">
                 </app-metadata>
             </div>
@@ -84,7 +92,7 @@
 
                 <app-metadata
                     [parent]="outputs"
-                    (add)="add(outputs, 'metadata')"
+                    (add)="add(outputs)"
                     (remove)="remove(outputs, $event)">
                 </app-metadata>
             </div>
@@ -92,7 +100,7 @@
     </form>
   </div>
 </section>
-<pre>{{ form.value.metadata | json }}</pre>
+<pre>{{ form.value | json }}</pre>
 <pre>
     {{ form.valid | json }}
 </pre>
