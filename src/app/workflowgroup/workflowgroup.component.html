@@ -1,0 +1,96 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">Form Workflow</h1>
+    <h2 class="subtitle">
+      A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+    </h2>
+
+    <form [ngClass]="{ 'hasSubmmited': hasSubmmited }" [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="columns">
+            <div class="column is-6">
+                <label class="label">Alias</label>
+                <div class="control is-expanded has-icons-left">
+                    <input class="input" type="text" formControlName="alias" placeholder="Nome do Agrupamento">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="column">
+                <label class="label">Ícone</label>
+                <div class="control is-expanded has-icons-left">
+                    <input class="input" type="text" formControlName="icon" placeholder="Url do ícone">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+             <div class="column is-6">
+                <label class="label">Descrição</label>
+                <div class="control is-expanded has-icons-left">
+                    <input class="input" type="text" formControlName="description" placeholder="Descrição do agrupamento">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="column">
+                <label class="label">Dica</label>
+                <div class="control is-expanded has-icons-left">
+                    <input class="input" type="text" formControlName="hint" placeholder="Dica do agrupamento">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div formGroupName="metadata">
+
+            <h2 class="subtitle">Metadados</h2>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Entradas
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content" formArrayName="inputs">
+                    <div class="content" *ngFor="let input of inputs.controls; let i = index; let last = last" [formGroupName]="i">
+                        <app-metadata></app-metadata>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Saídas
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content"formArrayName="outputs">
+                    <div class="content" *ngFor="let input of outputs.controls; let i = index; let last = last" [formGroupName]="i">
+                        <app-metadata></app-metadata>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+</section>
+<pre>{{ form.value | json }}</pre>
+<pre>
+    {{ form.valid | json }}
+</pre>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { User } from '../signup.interface';
+import { Workflow } from '../model';
+
+import { WORKFLOW } from '../worflowgroup';
 
 @Component({
   selector: 'app-reactive-form-builder',
@@ -13,9 +16,12 @@ export class ReactiveFormBuilderComponent implements OnInit {
   myControl: FormGroup;
   orderForm: FormGroup;
 
+  mockWorkflow: Workflow;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+
     this.orderForm = this.fb.group({
       customerName: '',
       emails: this.fb.array([]),
