@@ -47,7 +47,7 @@
   <button type="submit" [disabled]="user.invalid">Sign up</button>
 </form> -->
 
-<form novalidate (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+<form novalidate (ngSubmit)="onSubmit(orderForm)" [formGroup]="orderForm">
     <label>
         Cliente:
         <input type="text" formControlName="customerName">
