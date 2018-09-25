@@ -9,6 +9,8 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 export class MetadataComponent {
 
+  requestTypes = ['String', 'Boolean', 'Number'];
+
   @Input()
   parent: FormArray;
 

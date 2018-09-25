@@ -5,52 +5,42 @@
             <fieldset [formGroup]="metadataControl">
                 <legend>Metadata {{ i + 1 }}</legend>
                 <div class="columns">
-                <div class="column is-2">
-                    <label class="label">Nome</label>
-                    <div class="control is-expanded has-icons-left">
-                        <input class="input" type="text" formControlName="name" (keydown.space)="$event.preventDefault()" placeholder="Name">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                    <div class="column is-2">
+                        <app-fields-input-text
+                            label="Nome da váriavel"
+                            placeholder=""
+                            formControlName="name">
+                        </app-fields-input-text>
                     </div>
-                </div>
-                <div class="column is-5">
-                    <label class="label">Label</label>
-                    <div class="control is-expanded has-icons-left">
-                        <input class="input" type="text" formControlName="label" placeholder="Label">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                    <div class="column is-5">
+                        <app-fields-input-text
+                            label="Título da váriavel"
+                            placeholder=""
+                            formControlName="label">
+                        </app-fields-input-text>
                     </div>
-                </div>
-                <div class="column">
-                    <label class="label">Descrição</label>
-                    <div class="control is-expanded has-icons-left">
-                        <input class="input" type="text" formControlName="description" placeholder="Descrição">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                    <div class="column">
+                        <app-fields-input-text
+                            label="Descrição da váriavel"
+                            placeholder=""
+                            formControlName="description">
+                        </app-fields-input-text>
                     </div>
-                </div>
                 </div>
                 <div class="columns">
                     <div class="column is-5">
-                        <label class="label">Hint</label>
-                        <div class="control is-expanded has-icons-left">
-                            <input class="input" type="text" formControlName="hint" placeholder="Hint">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
+                        <app-fields-input-text
+                            label="Dica para ajudar no workflow"
+                            placeholder=""
+                            formControlName="hint">
+                        </app-fields-input-text>
                     </div>
                     <div class="column is-3">
                         <label class="label">Tipo</label>
-                        <div class="control is-expanded has-icons-left">
-                            <input class="input" type="text" formControlName="type" placeholder="Tipo">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
+                        <select formControlName="type">
+                            <option value="" default>Tipo do Componente</option>
+                            <option *ngFor="let requestType of requestTypes" [value]="requestType">{{requestType}}</option>
+                        </select>
                     </div>
                     <div class="column">
                         <label class="label">&nbsp;</label>

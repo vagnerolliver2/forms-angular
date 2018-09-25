@@ -12,6 +12,8 @@ import { WorkflowgroupComponent } from './workflowgroup/workflowgroup.component'
 import { Route } from '@angular/compiler/src/core';
 import { HomeComponent } from './home/home.component';
 import { MetadataComponent } from './workflowgroup/components/metadata/metadata.component';
+import { FieldsInputTextComponent } from './workflowgroup/components/fields-input-text/fields-input-text.component';
+import { CardMetadataComponent } from './workflowgroup/components/card-metadata/card-metadata.component';
 
 const appRoutes: Routes = [
   { path: 'workflowgroup', component: WorkflowgroupComponent },
@@ -27,7 +29,9 @@ const appRoutes: Routes = [
     ComponentsComponent,
     WorkflowgroupComponent,
     HomeComponent,
-    MetadataComponent
+    MetadataComponent,
+    FieldsInputTextComponent,
+    CardMetadataComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

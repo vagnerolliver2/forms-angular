@@ -5,98 +5,63 @@
       A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
     </h2>
 
-    <form [ngClass]="{ 'hasSubmmited': hasSubmmited }" [formGroup]="form" (ngSubmit)="submitForm()">
+    {{ form.value.alias }}
+
+    <form [ngClass]="{ 'hasSubmmited': hasSubmmited }" [formGroup]="form" (ngSubmit)="submitForm(form)">
         <div class="columns">
             <div class="column is-6">
-                <label class="label">Alias</label>
-                <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text"
-                        formControlName="alias"
-                        placeholder="Nome do Agrupamento">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
+                <app-fields-input-text
+                    label="Nome do Agrupamento"
+                    placeholder=""
+                    formControlName="alias">
+                </app-fields-input-text>
             </div>
             <div class="column">
-                <label class="label">Ícone</label>
-                <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text"
-                        formControlName="icon"
-                        placeholder="Url do ícone">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
+                <app-fields-input-text
+                    label="Ícone"
+                    placeholder=""
+                    formControlName="icon">
+                </app-fields-input-text>
             </div>
         </div>
         <div class="columns">
              <div class="column is-6">
-                <label class="label">Descrição</label>
-                <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text"
-                        formControlName="description"
-                        placeholder="Descrição do agrupamento">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
+                <app-fields-input-text
+                    label="Description"
+                    placeholder=""
+                    formControlName="description">
+                </app-fields-input-text>
             </div>
             <div class="column">
-                <label class="label">Dica</label>
-                <div class="control is-expanded has-icons-left">
-                    <input class="input" type="text"
-                        formControlName="hint"
-                        placeholder="Dica do agrupamento">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
+                <app-fields-input-text
+                    label="Dica"
+                    placeholder=""
+                    formControlName="hint">
+                </app-fields-input-text>
             </div>
         </div>
 
         <div formGroupName="metadata">
+            <h2 class="subtitle">Configuração dos Metadados(entradas/saídas)</h2>
 
-            <h2 class="subtitle">Metadados</h2>
-
-            <div class="card" *ngIf="inputs.controls.length > 0">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        Entradas
-                    </p>
-                    <a class="card-header-icon">
-                        <span class="icon">
-                            <i class="fa fa-angle-down"></i>
-                        </span>
-                    </a>
-                </header>
-
+            <app-card-metadata title="Meus Valores de Entrada" *ngIf="inputs.controls.length > 0">
                 <app-metadata
                     [parent]="inputs"
                     (add)="add(inputs)"
                     (remove)="remove(inputs, $event)">
                 </app-metadata>
-            </div>
+            </app-card-metadata>
 
-            <div class="card" *ngIf="outputs.controls.length > 0">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        Saídas
-                    </p>
-                    <a class="card-header-icon">
-                        <span class="icon">
-                            <i class="fa fa-angle-down"></i>
-                        </span>
-                    </a>
-                </header>
-
+            <app-card-metadata title="Meus Valores de Saída" *ngIf="outputs.controls.length > 0">
                 <app-metadata
                     [parent]="outputs"
                     (add)="add(outputs)"
                     (remove)="remove(outputs, $event)">
                 </app-metadata>
-            </div>
+            </app-card-metadata>
         </div>
+
+        <button type="submit">ENVIAR</button>
     </form>
   </div>
 </section>

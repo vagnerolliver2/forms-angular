@@ -41,6 +41,10 @@ export class WorkflowgroupComponent implements OnInit {
         return this.form.get('metadata') as FormControl;
     }
 
+    get alias(): FormControl {
+        return this.form.get('alias') as FormControl;
+    }
+
     get inputs(): FormArray {
         return this.metadata.get('inputs') as FormArray;
     }
@@ -93,7 +97,7 @@ export class WorkflowgroupComponent implements OnInit {
             'label': [label, Validators.required],
             'description': [description],
             'hint': [hint],
-            'type': [type],
+            'type': [type, Validators.required],
             'required': [required]
         }, {});
     }
@@ -114,8 +118,8 @@ export class WorkflowgroupComponent implements OnInit {
         formArray.removeAt(index);
     }
 
-    submitForm() {
+    submitForm(value) {
         this.hasSubmmited = false;
-        console.log(this.form.value);
+        console.log(value);
     }
 }
